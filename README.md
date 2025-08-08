@@ -1,24 +1,26 @@
-# README
+# 🧠 Candace's Developer Portfolio
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to my personal portfolio — a one-page showcase of my work, skills, and contact info. Built with **Ruby on Rails**, **Python microservices**, and a clean, responsive UI powered by **Bootstrap**.
 
-Things you may want to cover:
+## 🚀 Features
 
-* Ruby version
+- Modular sections for:
+  - Bio and downloadable resume
+  - GitHub project cards with live links
+  - Contact form with backend integration
+- PostgreSQL-powered backend with automated startup
+- Asset pipeline optimized for fast load times
+- Responsive layout for desktop and mobile
 
-* System dependencies
+## 📦 Setup Instructions
 
-* Configuration
+```bash
+# Clone the repo
+git clone https://github.com/CeeFish/my_portfolio.git
+cd my_portfolio
 
-* Database creation
+# Install dependencies
+bundle install
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
