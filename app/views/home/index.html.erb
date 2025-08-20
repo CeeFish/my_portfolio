@@ -1,115 +1,12 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <title>Developer Portfolio</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-  <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
-    section {
-      padding: 100px 0;
-    }
-  </style>
-</head>
-
-<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="70">
-  <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand p-2">Candace Fisher</a>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#bio">Bio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#projects">Projects</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-            Resume
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#contact">Contact</a>
-        </li>
-      </ul>
-    </div>
-    </div>
-  </nav>
-
-  <section id="bio" class="bg-light text-center">
-    <div class="container">
-      <h2>About Me</h2>
-      <p>I am a Software Developer with years of experience in designing, developing, and maintaining a high-performance web application. My expertise includes Ruby on Rails, JavaScript, RESTful APIs, and Python. My experience spans code migration, UI enhancements, automation, production support, and performance optimization. I am also skilled in database management, third-party API integrations, and building scalable, secure solutions. Beyond development, I actively engage in code reviews, agile methodologies, and cross-functional collaboration to drive business value. I have a solid understanding of Microsoft Power BI to enhance productivity and analyze data. I am passionate about continuous learning, problem-solving, and crafting software solutions that enhance user experience and operational efficiency. Let's connect to explore how I can contribute to your next project!</p>
-    </div>
-  </section>
-
-  <section id="projects" class="text-center">
-    <div class="container">
-      <h2>Projects</h2>
-      <ul class="list-unstyled">
-        <li><a href="https://github.com/CeeFish/my_portfolio" target="_blank">My Portfolio</a></li>
-        <li><a href="https://github.com/CodeTheDream/upstate" target="_blank">UpState</a></li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="contact" class="text-center">
-    <div class="container">
-      <h2>Contact Me</h2>
-      <% if flash[:notice] %>
-      <div class="alert alert-success"><%= flash[:notice] %></div>
-      <% end %>
-
-      <%= form_with url: contact_path, method: :post, local: true, class: "text-start mx-auto" do |f| %>
-      <div class="mb-3">
-        <%= f.label :name %>
-        <%= f.text_field :name, class: "form-control" %>
-      </div>
-      <div class="mb-3">
-        <%= f.label :email %>
-        <%= f.email_field :email, class: "form-control" %>
-      </div>
-      <div class="mb-3">
-        <%= f.label :phone %>
-        <%= f.telephone_field :phone, class: "form-control" %>
-      </div>
-      <div class="mb-3">
-        <%= f.label :message %>
-        <%= f.text_area :message, rows: 4, class: "form-control" %>
-      </div>
-      <%= f.submit "Send Message", class: "btn btn-primary" %>
-      <% end %>
-    </div>
-  </section>
-
-  <footer class="bg-dark text-white text-center py-3">
-    <div class="container d-flex justify-content-center align-items-center gap-3">
-      <a href="https://github.com/CeeFish" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in new tab)" class="text-white fs-4">
-        <i class="bi bi-github"></i>
-      </a>
-
-      <a href="https://www.linkedin.com/in/candace-fisher-mba-developer/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in new tab)" class="text-white fs-4">
-        <i class="bi bi-linkedin"></i>
-      </a>
-
-      <a href="mailto:youremail@example.com" aria-label="Send email" class="text-white fs-4">
-        <i class="bi bi-envelope"></i>
-      </a>
-    </div>
-
-    <div class="mt-2 small">
-      &copy; <%= Date.today.year %> Candace Fisher
-    </div>
-  </footer>
-
-
-</body>
-
-</html>
+<section id="about" class="py-5">
+  <%= render "home/pages/about" %>
+</section>
+<section id="about" class="py-5">
+  <%= render "home/pages/projects" %>
+</section>
+<section id="about" class="py-5">
+  <%= render "home/pages/courses_and_certifications" %>
+</section>
+<section id="about" class="py-5">
+  <%= render "home/pages/contact" %>
+</section>
