@@ -93,6 +93,9 @@ GEM
       irb (~> 1.10)
       reline (>= 0.3.8)
     dotenv (3.1.8)
+    dotenv-rails (3.1.8)
+      dotenv (= 3.1.8)
+      railties (>= 6.1)
     drb (2.2.3)
     ed25519 (1.4.0)
     erb (5.0.2)
@@ -100,6 +103,7 @@ GEM
     et-orbi (1.2.11)
       tzinfo
     ffi (1.17.2-x64-mingw-ucrt)
+    ffi (1.17.2-x86_64-linux-gnu)
     fugit (1.11.1)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
@@ -342,6 +346,7 @@ DEPENDENCIES
   bootstrap (~> 5.3.0)
   brakeman
   debug
+  dotenv-rails
   importmap-rails
   jbuilder
   kamal
