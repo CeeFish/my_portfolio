@@ -6,4 +6,7 @@ Rails.application.routes.draw do
 
   # Contact form submission
   post "/contact", to: "home#submit_contact", as: :contact
+
+  # Projects API endpoint
+  get "/projects.json", to: "home#projects_json"
 end

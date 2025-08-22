@@ -1,13 +1,28 @@
-<section id="projects" class="text-center">
+<section id="initial-projects" class="text-center">
   <div class="container">
     <h2>Projects</h2>
-    <ul class="list-unstyled">
-      <li>
-        <a href="https://github.com/CeeFish/my_portfolio" target="_blank">My Portfolio</a>
-      </li>
-      <li>
-        <a href="https://github.com/CodeTheDream/upstate" target="_blank">UpState</a>
-      </li>
-    </ul>
+    <div class="row mb-5">
+      <% if @initial_projects.present? %>
+        <% @initial_projects.each do |p| %>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title"><%= p["name"] %></h5>
+                <p class="card-text"><%= p["description"] %></p>
+                <a href="<%= p["url"] %>" target="_blank" class="btn btn-outline-primary">
+                  View on GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="col-12 text-muted text-center">
+          No initial projects loaded.
+        </div>
+      <% end %>
+    </div>
   </div>
 </section>
+
+<section id="dynamic-projects" class="row"></section>
