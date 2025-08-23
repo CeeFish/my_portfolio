@@ -6,11 +6,14 @@
         <% @initial_projects.each do |p| %>
           <div class="col-md-4 mb-4">
             <div class="card h-100">
+              <% Array(p["image_urls"]).each_with_index do |img, i| %>
+                <img src="<%= img %>" class="card-img-top" alt="<%= p["name"] %> screenshot <%= i + 1 %>">
+              <% end %>
               <div class="card-body">
                 <h5 class="card-title"><%= p["name"] %></h5>
                 <p class="card-text"><%= p["description"] %></p>
                 <a href="<%= p["url"] %>" target="_blank" class="btn btn-outline-primary">
-                  View on GitHub
+                  View Live Site
                 </a>
               </div>
             </div>
@@ -37,7 +40,7 @@
     .then(response => response.json())
     .then(data => {
       const container = document.getElementById("dynamic-projects-container");
-      container.innerHTML = ""; 
+      container.innerHTML = "";
 
       if (data.length === 0) {
         container.innerHTML = "<div class='col-12 text-center text-muted'>No dynamic projects found.</div>";
