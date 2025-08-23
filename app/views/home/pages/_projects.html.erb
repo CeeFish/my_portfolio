@@ -25,4 +25,47 @@
   </div>
 </section>
 
-<section id="dynamic-projects" class="row"></section>
+<section id="dynamic-projects" class="container">
+  <h2 class="text-center">GitHub Projects</h2>
+  <div class="row" id="dynamic-projects-container">
+    <div class="col-12 text-center text-muted">Loading dynamic projects...</div>
+  </div>
+</section>
+
+<script>
+  fetch("http://127.0.0.1:5000/projects")
+    .then(response => response.json())
+    .then(data => {
+      const container = document.getElementById("dynamic-projects-container");
+      container.innerHTML = ""; 
+
+      if (data.length === 0) {
+        container.innerHTML = "<div class='col-12 text-center text-muted'>No dynamic projects found.</div>";
+        return;
+      }
+
+      data.forEach(project => {
+        const col = document.createElement("div");
+        col.className = "col-md-4 mb-4";
+
+        col.innerHTML = `
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">${project.name}</h5>
+              <p class="card-text">${project.description}</p>
+              <a href="${project.html_url}" target="_blank" class="btn btn-outline-primary">
+                View on GitHub
+              </a>
+            </div>
+          </div>
+        `;
+
+        container.appendChild(col);
+      });
+    })
+    .catch(error => {
+      document.getElementById("dynamic-projects-container").innerHTML =
+        "<div class='col-12 text-center text-danger'>Error loading dynamic projects.</div>";
+      console.error("Fetch error:", error);
+    });
+</script>

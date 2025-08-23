@@ -2,11 +2,14 @@ class HomeController < ApplicationController
   def index
     begin
       resp = HTTParty.get("#{ENV['PY_API_URL']}/api/projects?limit=3")
-      @initial_projects = resp.success? ? resp.parsed_response : []
+      projects = resp.success? ? resp.parsed_response : []
     rescue => e
       Rails.logger.error "Project fetch failed: #{e.message}"
-      @initial_projects = []
+      projects = []
     end
+
+    featured = ENV.fetch("FEATURED_PROJECT", "my-portfolio")
+    @initial_projects = projects.select { |p| p["name"] == featured }
   end
 
   def submit_contact
@@ -28,4 +31,3 @@ class HomeController < ApplicationController
     params.permit(:name, :email, :phone, :message)
   end
 end
-
