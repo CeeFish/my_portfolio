@@ -1,9 +1,8 @@
-# 🧠 Candace's Developer Portfolio
+My Developer Portfolio
 
-Welcome to my personal portfolio — a one-page showcase of my work, skills, and contact info. Built with **Ruby on Rails**, **Python microservices**, and a clean, responsive UI powered by **Bootstrap**.
+Welcome to my portfolio — a one-page showcase of my work, skills, and contact info. Built with **Ruby on Rails**, **Python microservices**, and a clean, responsive UI powered by **Bootstrap**.
 
-## 🚀 Features
-
+Some of the features:
 - Modular sections for:
   - Bio and downloadable resume
   - GitHub project cards with live links
@@ -12,9 +11,8 @@ Welcome to my personal portfolio — a one-page showcase of my work, skills, and
 - Asset pipeline optimized for fast load times
 - Responsive layout for desktop and mobile
 
-## 📦 Setup Instructions
-
-```bash
+Setup Instructions:
+bash
 # Clone the repo
 git clone https://github.com/CeeFish/my_portfolio.git
 cd my_portfolio
