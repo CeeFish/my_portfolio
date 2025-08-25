@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
     private_project = {
-      "name"        => "UpState (Private)",
+      "name"        => "UpState",
       "description" => "NC's fastest and most accurate legislation tracker and committee transcript tool.",
       "url"         => "https://start.keepupstate.com/",
       "image_urls"  => [
