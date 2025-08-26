@@ -19,6 +19,29 @@ class HomeController < ApplicationController
     end
 
     @initial_projects = [private_project] + fetched
+
+    @courses_and_certifications = [
+      {
+        "title" => "Stanford University's Code in Place",
+        "type" => "pdf",
+        "file_url" => "/docs/code-in-place.pdf"
+      },
+      {
+        "title" => "CTD: Rails Practicum",
+        "type" => "pdf",
+        "file_url" => "/docs/practicum.pdf"
+      },
+      {
+        "title" => "CTD: Advanced Ruby on Rails",
+        "type" => "pdf",
+        "file_url" => "/docs/ror-certificate.pdf"
+      },
+      {
+        "title" => "GA: Data Analytics",
+        "type" => "pdf",
+        "file_url" => "/docs/ga-data-analytics.pdf"
+      }
+    ]
   end
 
   def submit_contact

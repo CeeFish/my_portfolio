@@ -1,22 +1,26 @@
-<section id="courses" class="bg-light text-center">
+<section id="courses" class="bg-light text-center py-5">
   <div class="container">
-    <h2>Courses and Certifications</h2>
-    <ul class="list-unstyled">
-      <li>
-        <a href="#" target="_blank">Stanford Code in Place</a>
-      </li>
-      <li>
-        <a href="#" target="_blank">CTD: Rails Practicum</a>
-      </li>
-      <li>
-        <a href="#" target="_blank">CTD: Advanced Ruby on Rails</a>
-      </li>
-      <li>
-        <a href="#" target="_blank">CTD: Intro to Programming</a>
-      </li>
-      <li>
-        <a href="#" target="_blank">GA: Data Analysis</a>
-      </li>
-    </ul>
+    <h2 class="mb-4">Courses and Certifications</h2>
+    <div class="row justify-content-center">
+      <% @courses_and_certifications.each do |course| %>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <% if course["type"] == "pdf" %>
+              <div class="card-body">
+                <h5 class="card-title"><%= course["title"] %></h5>
+                <a href="<%= course["file_url"] %>" target="_blank" class="btn btn-outline-success">
+                  Download PDF
+                </a>
+              </div>
+            <% elsif course["type"] == "image" %>
+              <img src="<%= course["image_url"] %>" class="card-img-top" alt="<%= course["title"] %> preview" loading="lazy">
+              <div class="card-body">
+                <h5 class="card-title"><%= course["title"] %></h5>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </section>
