@@ -29,7 +29,8 @@ ENV RAILS_ENV="production" \
 FROM base AS build
 
 # Install packages needed to build gems
-RUN apt-get update -qq && \
+RUN rm -rf /var/lib/apt/lists/* && \
+    apt-get update && \
     apt-get install --no-install-recommends -y \
     build-essential \
     git \
@@ -38,7 +39,7 @@ RUN apt-get update -qq && \
     pkg-config \
     libxml2-dev \
     libxslt1-dev \
-    zlib1g-dev && \
+    zlib1g-dev\
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Install Node.js and Yarn
