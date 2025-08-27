@@ -1,0 +1,14 @@
+{
+  "name": "my_portfolio",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/CeeFish/my_portfolio.git",
+  "author": "Candace <can.o.fisher@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.1.12"
+  }
+}
