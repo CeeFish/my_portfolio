@@ -29,8 +29,9 @@ ENV RAILS_ENV="production" \
 FROM base AS build
 
 # Install packages needed to build gems
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y \
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    # Packages for building gems
     build-essential \
     git \
     libpq-dev \
@@ -38,13 +39,15 @@ RUN apt-get update -qq && \
     pkg-config \
     libxml2-dev \
     libxslt1-dev \
-    zlib1g-dev && \
-    rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
+    zlib1g-dev \
+    curl \
+    && \
 
 # Install Node.js and Yarn
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
     apt-get install -y nodejs && \
-    npm install --global yarn
+    npm install --global yarn && \
+    rm -rf /var/lib/apt/lists/*
 
 # Confirm installation
 RUN yarn --version && node --version
