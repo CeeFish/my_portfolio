@@ -30,7 +30,7 @@ FROM base AS build
 
 # Install packages needed to build gems
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential git libpq-dev libyaml-dev pkg-config && \
+    apt-get install --no-install-recommends -y \ build-essential \  git \ libpq-dev \ libyaml-dev \ pkg-config \ libxml2-dev \ libxslt1-dev \ zlib1g-dev && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Install Node.js and Yarn
@@ -46,10 +46,9 @@ RUN yarn install
 
 # Install application gems (allow lockfile updates for Nokogiri bump)
 COPY Gemfile Gemfile.lock ./
-RUN bundle config set --local frozen false \
-    && bundle install \
-    && rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git \
-    && bundle exec bootsnap precompile --gemfile
+RUN bundle install && \
+    rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
+    bundle exec bootsnap precompile --gemfile
 
 # Copy application code
 COPY . .
