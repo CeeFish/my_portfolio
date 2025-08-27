@@ -31,7 +31,6 @@ FROM base AS build
 # Install packages needed to build gems
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    # Packages for building gems
     build-essential \
     git \
     libpq-dev \
