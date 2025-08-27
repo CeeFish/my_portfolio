@@ -51,6 +51,7 @@ RUN apt-get update && \
 RUN yarn --version && node --version
 
 # Install JS dependencies manually
+COPY package.json yarn.lock ./
 RUN yarn install
 
 # Install application gems (allow lockfile updates for Nokogiri bump)
