@@ -33,10 +33,19 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git libpq-dev libyaml-dev pkg-config && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-# Install Node.js and Yarn for cssbundling-rails
+# Install Node.js and Yarn
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
     apt-get install -y nodejs && \
     npm install --global yarn
+
+# Confirm installation
+RUN yarn --version && node --version
+
+# Install JS dependencies manually
+RUN yarn install
+
+# Precompile assets
+RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
