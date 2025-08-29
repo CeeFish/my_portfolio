@@ -75,8 +75,8 @@ RUN chmod +x bin/* && \
 RUN yarn install
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile --trace > precompile.log 2>&1
-RUN cat precompile.log
+# RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile --trace > precompile.log 2>&1
+# RUN cat precompile.log
 
 
 
