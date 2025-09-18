@@ -39,6 +39,7 @@ RUN apt-get update && \
     libxml2-dev \
     libxslt1-dev \
     zlib1g-dev \
+    libffi-dev \
     curl \
     && \
 # Install Node.js and Yarn
