@@ -44,6 +44,7 @@ gem "sassc-rails"
 gem "httparty"
 gem "cssbundling-rails"
 gem 'nokogiri', '~> 1.18.9'
+gem 'fiddle'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
