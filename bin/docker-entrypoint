@@ -1,14 +1,17 @@
-#!/bin/bash -e
+#!/usr/bin/env bash
+set -euo pipefail
 
 # Enable jemalloc for reduced memory usage and latency.
-if [ -z "${LD_PRELOAD+x}" ]; then
-    LD_PRELOAD=$(find /usr/lib -name libjemalloc.so.2 -print -quit)
-    export LD_PRELOAD
+if [[ -z "${LD_PRELOAD+x}" ]]; then
+  LD_PRELOAD=$(find /usr/lib -name libjemalloc.so.2 -print -quit)
+  export LD_PRELOAD
 fi
 
-# If running the rails server then create or migrate existing database
-if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
-  ./bin/rails db:prepare
+# If the container was started with "bundle exec rails server …"
+if [[ "${1-}" == "bundle" && "${2-}" == "exec" && "${3-}" == "rails" && "${4-}" == "server" ]]; then
+  echo "⏳ Running db:prepare before boot…"
+  bundle exec rails db:prepare
 fi
 
-exec "${@}"
+# Replace this shell with the user’s command so exit codes bubble up
+exec "$@"
