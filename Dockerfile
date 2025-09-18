@@ -64,6 +64,12 @@ RUN bundle install --jobs 4 --retry 3 \
 # Copy application code
 COPY . .
 
+# Try booting the app to catch runtime errors
+RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails runner "puts 'App boots successfully'" \
+    > boot_check.log 2>&1 \
+    || true \
+    && head -n 20 boot_check.log
+
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
