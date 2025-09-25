@@ -7,7 +7,7 @@
 # For a containerized dev environment, see Dev Containers: https://guides.rubyonrails.org/getting_started_with_devcontainer.html
 
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version
-ARG RUBY_VERSION=3.3.7
+ARG RUBY_VERSION=3.3.5
 FROM ruby:$RUBY_VERSION-slim AS base
 
 # Rails app lives here
@@ -56,7 +56,6 @@ RUN yarn install
 
 # Install application gems (allow lockfile updates for Nokogiri bump)
 COPY Gemfile Gemfile.lock ./
-RUN gem install bundler -v 2.7.1
 RUN bundle install --jobs 4 --retry 3 \
     && rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache \
     && bundle exec bootsnap precompile --gemfile
