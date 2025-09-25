@@ -22,6 +22,11 @@ class HomeController < ApplicationController
 
     @courses_and_certifications = [
       {
+        "title" => "NC Community College System",
+        "type" => "pdf",
+        "file_url" => "/docs/apprenticeship-diploma.pdf"
+      },
+      {
         "title" => "Stanford University's Code in Place",
         "type" => "pdf",
         "file_url" => "/docs/code-in-place.pdf"
