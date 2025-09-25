@@ -56,6 +56,7 @@ RUN yarn install
 
 # Install application gems (allow lockfile updates for Nokogiri bump)
 COPY Gemfile Gemfile.lock ./
+RUN gem install bundler -v 2.7.1
 RUN bundle install --jobs 4 --retry 3 \
     && rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache \
     && bundle exec bootsnap precompile --gemfile
