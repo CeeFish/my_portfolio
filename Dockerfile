@@ -8,7 +8,7 @@
 
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version
 ARG RUBY_VERSION=3.4.5
-FROM ruby:3.4.5 AS base
+FROM ruby:3.2-slim AS base
 
 # Rails app lives here
 WORKDIR /rails
