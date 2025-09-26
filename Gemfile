@@ -45,7 +45,7 @@ gem "bootstrap", "~> 5.3.0"
 gem "sassc-rails"
 gem "httparty"
 gem "cssbundling-rails"
-gem 'nokogiri', '~> 1.18.9'
+gem 'nokogiri', '~> 1.18.10'
 gem 'fiddle'
 
 group :development, :test do
