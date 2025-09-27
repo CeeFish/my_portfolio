@@ -91,7 +91,6 @@ Rails.application.configure do
   if ENV['RAILS_MASTER_KEY'].present?
     config.active_record.encryption.primary_key = ENV['RAILS_MASTER_KEY']
     config.active_record.encryption.deterministic_key = ENV['RAILS_MASTER_KEY']
-    # You can set a static salt (32-byte string). Make sure it's consistent across environments
     config.active_record.encryption.key_derivation_salt = '0848dda232e38c7e71354002d637b1cd'
   end
 end
