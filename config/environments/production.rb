@@ -87,4 +87,11 @@ Rails.application.configure do
   #
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+  # Ensure Active Record encryption uses the existing master key
+  if ENV['RAILS_MASTER_KEY'].present?
+    config.active_record.encryption.primary_key = ENV['RAILS_MASTER_KEY']
+    config.active_record.encryption.deterministic_key = ENV['RAILS_MASTER_KEY']
+    # You can set a static salt (32-byte string). Make sure it's consistent across environments
+    config.active_record.encryption.key_derivation_salt = '0848dda232e38c7e71354002d637b1cd'
+  end
 end
