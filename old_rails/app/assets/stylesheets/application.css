@@ -1,0 +1,68 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+@import "bootstrap";
+
+html {
+  scroll-behavior: smooth;
+}
+
+footer a {
+  transition: transform .12s ease, opacity .12s ease;
+}
+
+footer a:hover {
+  transform: translateY(-3px);
+  opacity: 0.9;
+}
+
+#navbar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-nav .nav-link {
+  position: relative;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ffc107;
+  transform: translateY(-2px);
+}
+
+.navbar-nav .nav-link::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background: #ffc107;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: right;
+}
+
+.navbar-nav .nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+@media (max-width: 992px) {
+  .navbar-nav {
+    text-align: center;
+  }
+}
+
+section {
+  scroll-margin-top: 80px;
+}
+
+.navbar {
+  background-color: red;
+}

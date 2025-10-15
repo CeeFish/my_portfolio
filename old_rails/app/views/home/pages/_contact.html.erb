@@ -1,0 +1,45 @@
+<section id="contact" class="text-center">
+  <div class="container">
+    <h2 class="mb-4">Let's Connect!</h2>
+    <% if flash[:notice] %>
+      <div class="alert alert-success w-75 mx-auto"><%= flash[:notice] %></div>
+    <% end %>
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-7">
+        <div class="card shadow-sm">
+          <div class="card-body bg-light">
+            <%= form_with url: contact_path, method: :post, local: true, class: "text-start" do |f| %>
+              <div class="mb-3">
+                <%= f.label :name do %>
+                  <i class="bi bi-person-fill me-1"></i> Name
+                <% end %>
+                <%= f.text_field :name, class: "form-control" %>
+              </div>
+              <div class="mb-3">
+                <%= f.label :email do %>
+                  <i class="bi bi-envelope-fill me-1"></i> Email
+                <% end %>
+                <%= f.email_field :email, class: "form-control" %>
+              </div>
+              <div class="mb-3">
+                <%= f.label :phone do %>
+                  <i class="bi bi-telephone-fill me-1"></i> Phone
+                <% end %>
+                <%= f.telephone_field :phone, class: "form-control" %>
+              </div>
+              <div class="mb-3">
+                <%= f.label :message do %>
+                  <i class="bi bi-chat-left-text-fill me-1"></i> Message
+                <% end %>
+                <%= f.text_area :message, rows: 4, class: "form-control" %>
+              </div>
+              <div class="text-center">
+                <%= f.submit "Send Message", class: "btn btn-primary px-4" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

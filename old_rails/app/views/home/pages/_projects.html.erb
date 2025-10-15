@@ -1,0 +1,74 @@
+<section id="initial-projects" class="text-center">
+  <div class="container">
+    <h2>Projects</h2>
+    <div class="row mb-5 justify-content-center">
+      <% if @initial_projects.present? %>
+        <% @initial_projects.each do |p| %>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <% Array(p["image_urls"]).each_with_index do |img, i| %>
+                <img src="<%= img %>" class="card-img-top" alt="<%= p["name"] %> screenshot <%= i + 1 %>">
+              <% end %>
+              <div class="card-body text-center">
+                <h5 class="card-title"><%= p["name"] %></h5>
+                <p class="card-text"><%= p["description"] %></p>
+                <a href="<%= p["url"] %>" target="_blank" class="btn btn-outline-primary">
+                  View Live Site
+                </a>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="col-12 text-muted text-center">
+          No initial projects loaded.
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<section id="dynamic-projects" class="container">
+  <h2 class="text-center">GitHub Projects</h2>
+  <div class="row justify-content-center" id="dynamic-projects-container">
+    <div class="col-12 text-center text-muted">Loading dynamic projects...</div>
+  </div>
+</section>
+
+<script>
+  fetch("http://127.0.0.1:5000/projects")
+    .then(response => response.json())
+    .then(data => {
+      const container = document.getElementById("dynamic-projects-container");
+      container.innerHTML = "";
+
+      if (data.length === 0) {
+        container.innerHTML = "<div class='col-12 text-center text-muted'>No dynamic projects found.</div>";
+        return;
+      }
+
+      data.forEach(project => {
+        const col = document.createElement("div");
+        col.className = "col-md-4 mb-4";
+
+        col.innerHTML = `
+          <div class="card h-100">
+            <div class="card-body text-center">
+              <h5 class="card-title">${project.name}</h5>
+              <p class="card-text">${project.description}</p>
+              <a href="${project.html_url}" target="_blank" class="btn btn-outline-primary">
+                View on GitHub
+              </a>
+            </div>
+          </div>
+        `;
+
+        container.appendChild(col);
+      });
+    })
+    .catch(error => {
+      document.getElementById("dynamic-projects-container").innerHTML =
+        "<div class='col-12 text-center text-danger'>Error loading dynamic projects.</div>";
+      console.error("Fetch error:", error);
+    });
+</script>
