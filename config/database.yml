@@ -43,3 +43,6 @@ production:
   username: <%= ENV.fetch("MY_PORTFOLIO_DATABASE_USER", "my_portfolio") %>
   password: <%= ENV.fetch("MY_PORTFOLIO_DATABASE_PASSWORD") %>
   url: <%= ENV['DATABASE_URL'] %>
+
+cable:
+  <<: *production
