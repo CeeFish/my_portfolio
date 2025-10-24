@@ -24,19 +24,26 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  host: <%= ENV.fetch("DATABASE_HOST", "localhost") %>
+  username: <%= ENV.fetch("DATABASE_USER", "postgres") %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD", "CeetheDev") %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
-  database: my_portfolio_development
+  database: <%= ENV.fetch("DATABASE_NAME", "my-portfolio-db") %>
 
 test:
   <<: *default
   database: my_portfolio_test
 
 production:
-  url: <%= ENV["DATABASE_URL"] %>
+  <<: *default
+  database: my_portfolio_production
+  username: <%= ENV.fetch("MY_PORTFOLIO_DATABASE_USER", "my_portfolio") %>
+  password: <%= ENV.fetch("MY_PORTFOLIO_DATABASE_PASSWORD") %>
+  url: <%= ENV['DATABASE_URL'] %>
+  host: <%= ENV["POSTGRES_HOST"] %>
 
 cable:
-  adapter: postgresql
-  url: <%= ENV["DATABASE_URL"] %>
+  <<: *production
