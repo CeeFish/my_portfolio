@@ -43,3 +43,7 @@ production: &production
 
 cable:
   <<: *production
+
+queue:
+  <<: *default
+  url: <%= ENV['SOLID_QUEUE_DATABASE_URL'] %>
